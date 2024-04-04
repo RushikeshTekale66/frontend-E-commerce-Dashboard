@@ -1,8 +1,10 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Profile from '../Assets/profile.png'
 
 const Nav = () => {
     const auth = localStorage.getItem('user');
+    let userInfo = JSON.parse(auth);
     const navigate = useNavigate();
 
     const logout = () => {
@@ -23,6 +25,7 @@ const Nav = () => {
                     <li><Link to="/profile">Profile</Link></li>
                     <li><Link to = "/about">About</Link></li>
                     <li><Link onClick={logout} to="/signup">Log Out</Link></li>
+                    <li style={{float:"right", fontSize:"30px", padding:"10px"}}>{userInfo.name}<img src={Profile} alt="Profile" height={40} width={40}></img></li>
                 </ul> :
 
                     <ul className="nav-ul nav-right">
